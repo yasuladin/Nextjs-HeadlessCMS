@@ -76,9 +76,23 @@ export const getCategoryDetail = async (
   queries?: MicroCMSQueries
 ) => {
   const detailData = await client.getListDetail<Category>({
-    endpoint: 'categories', // 本当に'catetories'で良いのか？
+    endpoint: 'categories',
     contentId,
     queries
   })
   return detailData;
+}
+
+export const getAllNewsList = async () => {
+  const listData = await client.getAllContents<News>({
+    endpoint: "news"
+  });
+  return listData;
+}
+
+export const getAllCategoriesList = async () => {
+  const listData = await client.getAllContents<Category>({
+    endpoint: "categories",
+  })
+  return listData;
 }
